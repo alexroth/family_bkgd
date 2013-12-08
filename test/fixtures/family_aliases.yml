@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: 
+  membid: 
+  type_of_name: 
+  alias_name: 
+  alias_hash5: 
+  comment: 
+  created_at: 
+  updated_at: 
+  other_type_value: MyString
+
+two:
+  name: 
+  membid: 
+  type_of_name: 
+  alias_name: 
+  alias_hash5: 
+  comment: 
+  created_at: 
+  updated_at: 
+  other_type_value: MyString

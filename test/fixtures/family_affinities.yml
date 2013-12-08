@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: 
+  membid: 
+  relationship: 
+  other_type_value: 
+  connection_name: 
+  connection_membid: 
+  comment: 
+  created_at: 
+  updated_at: 2013-12-07 22:50:56
+
+two:
+  name: 
+  membid: 
+  relationship: 
+  other_type_value: 
+  connection_name: 
+  connection_membid: 
+  comment: 
+  created_at: 
+  updated_at: 2013-12-07 22:50:56

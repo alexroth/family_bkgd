@@ -1,0 +1,34 @@
+<!-- partial _family_data_list_row -->
+<!-- Rev. 08/19/2012 to reformat -->
+<!-- Rev. 08/27/2012 to make parent names links, when possible -->
+<!-- Rev. 09/20/2012 for formatting -->
+<!-- Rev. 09/23-28/2012 to implement override_date-->
+<td><%= link_to family_datum_list_row.name, family_datum_list_row %></td>
+<% require 'general_helpers_201109'
+   puts; puts 'family_datum_list_row is ' + convert_record_to_line( family_datum_list_row ) if @debug_flag
+    display_date = ( family_datum_list_row.birth_date.nil? ?  
+       h( family_datum_list_row.override_year.nil? ? '' : family_datum_list_row.override_year ) : 
+       h( fmt_date_format_to_string( family_datum_list_row.birth_date ) ) )
+-%>
+<td><%=h display_date %><br />
+    <%=h family_datum_list_row.birth_place %></td>
+<td>[<%=h family_datum_list_row.membid %>]</td>
+
+<td><%=h family_datum_list_row.father %><br />
+    <%=h family_datum_list_row.mother %></td>
+<td>[<%=h family_datum_list_row.fatherid %>]<br />
+    [<%=h family_datum_list_row.motherid %>]</td>
+<td> &nbsp; </td>
+<% delete_msg = "Are you sure you want to delete record #{ family_datum_list_row.id } for #{ family_datum_list_row.name }?" %>
+<td> 
+<%= link_to 'Tree', { :controller => 'family_data', 
+        :action => 'tree', :id => family_datum_list_row.membid }  
+-%>
+        <%= link_to 'Edit', edit_family_datum_path(family_datum_list_row) %> 
+        <%= link_to 'Destroy', family_datum_list_row, 
+            :confirm => delete_msg, :method => :delete %></td>
+    <td> &nbsp; </td>
+    <td><small><%=h family_datum_list_row.gender %>., <%=h family_datum_list_row.id %><br /><%=h family_datum_list_row.hash5 %></small></td>
+    <td><small><%=h family_datum_list_row.updated_at %><br />
+        <%=h family_datum_list_row.created_at %></small></td>
+

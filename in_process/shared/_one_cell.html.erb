@@ -1,0 +1,5 @@
+<ul class=single_cell>
+  <li> <%= link_to one_cell["name"], :action => :tree_show, :id => one_cell[ :id ].to_i -%>
+ <%= (one_cell["gender"] + ",") unless one_cell["gender"].nil? || one_cell[ "gender" ] == "" %> <%= fmt_date_format_to_string( one_cell["birth_date"]) %></li>
+  <li class=left_regular>[<%= one_cell["membid"] unless one_cell["membid"].nil? || one_cell["membid"] == "" %>]</li>
+</ul>

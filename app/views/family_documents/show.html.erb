@@ -1,0 +1,79 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Doc descrip:</strong>
+  <%= @family_document.doc_descrip %>
+</p>
+
+<p>
+  <strong>Doc type:</strong>
+  <%= @family_document.doc_type %>
+</p>
+
+<p>
+  <strong>Doc link:</strong>
+  <%= @family_document.doc_link %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @family_document.name %>
+</p>
+
+<p>
+  <strong>Membid:</strong>
+  <%= @family_document.membid %>
+</p>
+
+<p>
+  <strong>Comment:</strong>
+  <%= @family_document.comment %>
+</p>
+
+<p>
+  <strong>Created at:</strong>
+  <%= @family_document.created_at %>
+</p>
+
+<p>
+  <strong>Updated at:</strong>
+  <%= @family_document.updated_at %>
+</p>
+
+<p>
+  <strong>Event type:</strong>
+  <%= @family_document.event_type %>
+</p>
+
+<p>
+  <strong>Event date:</strong>
+  <%= @family_document.event_date %>
+</p>
+
+<p>
+  <strong>Event place:</strong>
+  <%= @family_document.event_place %>
+</p>
+
+<p>
+  <strong>Place type:</strong>
+  <%= @family_document.place_type %>
+</p>
+
+<p>
+  <strong>Other doc type:</strong>
+  <%= @family_document.other_doc_type %>
+</p>
+
+<p>
+  <strong>Other place type:</strong>
+  <%= @family_document.other_place_type %>
+</p>
+
+<p>
+  <strong>Other event type:</strong>
+  <%= @family_document.other_event_type %>
+</p>
+
+<%= link_to 'Edit', edit_family_document_path(@family_document) %> |
+<%= link_to 'Back', family_documents_path %>

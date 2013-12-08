@@ -1,0 +1,43 @@
+<h1>Listing family_aliases</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Membid</th>
+      <th>Type of name</th>
+      <th>Alias name</th>
+      <th>Alias hash5</th>
+      <th>Comment</th>
+      <th>Created at</th>
+      <th>Updated at</th>
+      <th>Other type value</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @family_aliases.each do |family_alias| %>
+      <tr>
+        <td><%= family_alias.name %></td>
+        <td><%= family_alias.membid %></td>
+        <td><%= family_alias.type_of_name %></td>
+        <td><%= family_alias.alias_name %></td>
+        <td><%= family_alias.alias_hash5 %></td>
+        <td><%= family_alias.comment %></td>
+        <td><%= family_alias.created_at %></td>
+        <td><%= family_alias.updated_at %></td>
+        <td><%= family_alias.other_type_value %></td>
+        <td><%= link_to 'Show', family_alias %></td>
+        <td><%= link_to 'Edit', edit_family_alias_path(family_alias) %></td>
+        <td><%= link_to 'Destroy', family_alias, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Family alias', new_family_alias_path %>

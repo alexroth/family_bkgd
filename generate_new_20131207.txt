@@ -1,0 +1,7 @@
+rails generate scaffold FamilyAffinity name:string membid:integer relationship:string other_type_value:string connection_name:string connection_membid:integer comment:text created_at:datetime updated_at:datetime
+rails generate scaffold FamilyAlias name:string membid:integer type_of_name:string alias_name:string alias_hash5:string comment:text created_at:datetime updated_at:datetime other_type_value:string
+rails generate scaffold FamilyDatum name:string gender:string membid:integer father:string fatherid:integer mother:string motherid:integer birth_date:date birth_place:string comment:text hash5:string created_at:datetime updated_at:datetime override_year:string
+rails generate scaffold FamilyDocument doc_descrip:string doc_type:string doc_link:string name:string membid:integer comment:text created_at:datetime updated_at:datetime event_type:string event_date:date event_place:string place_type:string other_doc_type:string other_place_type:string other_event_type:string
+rails generate scaffold FamilyStartPoint family_descrip:string membid:integer comment:text created_at:datetime updated_at:datetime
+bundle exec rake db:migrate RAILS_ENV=development
+rails server

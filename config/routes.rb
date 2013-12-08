@@ -1,4 +1,14 @@
 FamilyBkgd::Application.routes.draw do
+  resources :family_start_points
+
+  resources :family_documents
+
+  resources :family_data
+
+  resources :family_aliases
+
+  resources :family_affinities
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -1,0 +1,43 @@
+<h1>Listing family_affinities</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Membid</th>
+      <th>Relationship</th>
+      <th>Other type value</th>
+      <th>Connection name</th>
+      <th>Connection membid</th>
+      <th>Comment</th>
+      <th>Created at</th>
+      <th>Updated at</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @family_affinities.each do |family_affinity| %>
+      <tr>
+        <td><%= family_affinity.name %></td>
+        <td><%= family_affinity.membid %></td>
+        <td><%= family_affinity.relationship %></td>
+        <td><%= family_affinity.other_type_value %></td>
+        <td><%= family_affinity.connection_name %></td>
+        <td><%= family_affinity.connection_membid %></td>
+        <td><%= family_affinity.comment %></td>
+        <td><%= family_affinity.created_at %></td>
+        <td><%= family_affinity.updated_at %></td>
+        <td><%= link_to 'Show', family_affinity %></td>
+        <td><%= link_to 'Edit', edit_family_affinity_path(family_affinity) %></td>
+        <td><%= link_to 'Destroy', family_affinity, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Family affinity', new_family_affinity_path %>

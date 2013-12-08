@@ -1,0 +1,10 @@
+    <table>
+    <% odd_or_even = 0
+       for child in children_table
+         odd_or_even = 1 - odd_or_even 
+    %>
+         <tr valign="top" class="ListLine<%= odd_or_even %>">
+                <%= render( :partial => "shared/family_datum_list_row", :object => child ) %>
+         </tr>
+       <% end %>
+    </table>

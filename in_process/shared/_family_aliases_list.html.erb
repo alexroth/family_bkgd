@@ -1,0 +1,63 @@
+<!-- Rev. 08/21/2012 to debug -->
+<!-- Rev. 09/04/2012 to improve formatting and to debug -->
+<!-- Rev. 11/11/2012 to improve formatting -->
+<% odd_or_even = 0 
+-%>
+<% prev_name = '' 
+   prev_membid = 0 
+-%>
+<table>
+<% for family_alias in family_aliases_list
+     odd_or_even = 1 - odd_or_even 
+-%>
+     <tr valign="top" class="ListLine<%= odd_or_even -%>">
+       <td>
+<%       unless controller.controller_name == 'family_data' 
+           unless ( family_alias.name == prev_name ) && 
+               ( family_alias.membid == prev_membid )
+             if family_alias.membid 
+-%>
+<%=            link_to family_alias.name, { :controller => 'family_data', 
+                   :action => 'show', :membid => family_alias.membid } 
+%>
+</td><td>
+<%=                '[' + h( family_alias.membid ) + ']'
+-%>
+<%           else 
+-%>
+<%=            link_to family_alias.name, { :controller => 'family_data', 
+                   :action => 'show', :name => family_alias.name }
+-%>
+<%           end
+           end 
+           prev_name = family_alias.name
+           prev_membid = family_alias.membid
+-%>        &nbsp;
+<%       end
+-%>
+         </td><td>
+<%       if family_alias.type_of_name 
+           this_tag = ( family_alias.type_of_name.downcase == "other" ?
+               family_alias.other_type_value : family_alias.type_of_name )
+         else
+           this_tag = "relationship"
+         end
+-%>
+<%=      link_to this_tag + ': ' + family_alias.alias_name, edit_family_alias_path(family_alias)
+-%>      &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+       </td><td><small>
+<%=h   family_alias.alias_hash5 
+-%>    &nbsp; &nbsp; 
+       Record ID: <%=h family_alias.id %> &nbsp; &nbsp; 
+       <br />
+       Updated: <%=h family_alias.updated_at %> &nbsp; &nbsp; 
+       Created: <%=h family_alias.created_at %></small>
+     </td></tr>
+<%   if family_alias.comment && ( family_alias.comment.length > 0 ) 
+       odd_or_even = 1 - odd_or_even 
+-%>    <tr valign='top' class="ListLine<%= odd_or_even %>"><td colspan='3'><%=h family_alias.comment %>
+       </td></tr>
+<%   end
+   end
+-%>
+</table>

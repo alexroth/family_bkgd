@@ -1,0 +1,35 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  doc_descrip: 
+  doc_type: 
+  doc_link: 
+  name: 
+  membid: 
+  comment: 
+  created_at: 
+  updated_at: 
+  event_type: 
+  event_date: 
+  event_place: 
+  place_type: 
+  other_doc_type: 
+  other_place_type: 
+  other_event_type: MyString
+
+two:
+  doc_descrip: 
+  doc_type: 
+  doc_link: 
+  name: 
+  membid: 
+  comment: 
+  created_at: 
+  updated_at: 
+  event_type: 
+  event_date: 
+  event_place: 
+  place_type: 
+  other_doc_type: 
+  other_place_type: 
+  other_event_type: MyString

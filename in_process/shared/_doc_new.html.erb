@@ -1,0 +1,24 @@
+  <p>
+    Name: <%= doc_new.label :name %> <%= doc_new.text_field :name, 
+        :size => 33 %> [link: <%= doc_new.text_field :membid, :size => '1' %>]
+    Event type <%= doc_new.select :event_type, 
+        %w{ birth marriage divorce rename decease other }, :include_blank => true, 
+        :size => '2' %>: 
+        <%= doc_new.date_select :event_date, :include_blank => true %> (Other event type: <%= doc_new.text_field :other_event_type, :include_blank => true, :size => '2' %>) 
+    Place: <%= doc_new.text_field :event_place, :include_blank => true, :size => '33' %> (Place type: <%= doc_new.select :place_type, %w{  other }, :include_blank => true, :size => '2' %>,
+ other place type: <%= doc_new.text_field :other_place_type, :include_blank => true, :size => '2' %>)
+  </p>
+  <p>
+    Document: <%= doc_new.text_field :doc_descrip, :include_blank => true, :size => '65'  %> 
+    (Type of document <%= doc_new.select :doc_type, %w{  file jpeg pdf link other }, 
+        :include_blank => true, :size => '2' %>,
+ other document type: <%= doc_new.text_field :other_doc_type, :include_blank => true, :size => '2' %>) 
+  </p>
+  <p>
+    Link: <%= doc_new.text_field :doc_link, :include_blank => true, :size => '65' %>
+  </p>
+  <p>
+    <%= doc_new.label :comment %><br />
+    <%= doc_new.text_area :comment, :size => '80' %>
+  </p>
+

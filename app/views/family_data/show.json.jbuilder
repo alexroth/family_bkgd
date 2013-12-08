@@ -1,0 +1,1 @@
+json.extract! @family_datum, :id, :name, :gender, :membid, :father, :fatherid, :mother, :motherid, :birth_date, :birth_place, :comment, :hash5, :created_at, :updated_at, :override_year, :created_at, :updated_at

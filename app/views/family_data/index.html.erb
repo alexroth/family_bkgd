@@ -1,0 +1,53 @@
+<h1>Listing family_data</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Gender</th>
+      <th>Membid</th>
+      <th>Father</th>
+      <th>Fatherid</th>
+      <th>Mother</th>
+      <th>Motherid</th>
+      <th>Birth date</th>
+      <th>Birth place</th>
+      <th>Comment</th>
+      <th>Hash5</th>
+      <th>Created at</th>
+      <th>Updated at</th>
+      <th>Override year</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @family_data.each do |family_datum| %>
+      <tr>
+        <td><%= family_datum.name %></td>
+        <td><%= family_datum.gender %></td>
+        <td><%= family_datum.membid %></td>
+        <td><%= family_datum.father %></td>
+        <td><%= family_datum.fatherid %></td>
+        <td><%= family_datum.mother %></td>
+        <td><%= family_datum.motherid %></td>
+        <td><%= family_datum.birth_date %></td>
+        <td><%= family_datum.birth_place %></td>
+        <td><%= family_datum.comment %></td>
+        <td><%= family_datum.hash5 %></td>
+        <td><%= family_datum.created_at %></td>
+        <td><%= family_datum.updated_at %></td>
+        <td><%= family_datum.override_year %></td>
+        <td><%= link_to 'Show', family_datum %></td>
+        <td><%= link_to 'Edit', edit_family_datum_path(family_datum) %></td>
+        <td><%= link_to 'Destroy', family_datum, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Family datum', new_family_datum_path %>

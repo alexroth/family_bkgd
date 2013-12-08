@@ -1,0 +1,55 @@
+<h1>Listing family_documents</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Doc descrip</th>
+      <th>Doc type</th>
+      <th>Doc link</th>
+      <th>Name</th>
+      <th>Membid</th>
+      <th>Comment</th>
+      <th>Created at</th>
+      <th>Updated at</th>
+      <th>Event type</th>
+      <th>Event date</th>
+      <th>Event place</th>
+      <th>Place type</th>
+      <th>Other doc type</th>
+      <th>Other place type</th>
+      <th>Other event type</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @family_documents.each do |family_document| %>
+      <tr>
+        <td><%= family_document.doc_descrip %></td>
+        <td><%= family_document.doc_type %></td>
+        <td><%= family_document.doc_link %></td>
+        <td><%= family_document.name %></td>
+        <td><%= family_document.membid %></td>
+        <td><%= family_document.comment %></td>
+        <td><%= family_document.created_at %></td>
+        <td><%= family_document.updated_at %></td>
+        <td><%= family_document.event_type %></td>
+        <td><%= family_document.event_date %></td>
+        <td><%= family_document.event_place %></td>
+        <td><%= family_document.place_type %></td>
+        <td><%= family_document.other_doc_type %></td>
+        <td><%= family_document.other_place_type %></td>
+        <td><%= family_document.other_event_type %></td>
+        <td><%= link_to 'Show', family_document %></td>
+        <td><%= link_to 'Edit', edit_family_document_path(family_document) %></td>
+        <td><%= link_to 'Destroy', family_document, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Family document', new_family_document_path %>

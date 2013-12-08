@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Family descrip:</strong>
+  <%= @family_start_point.family_descrip %>
+</p>
+
+<p>
+  <strong>Membid:</strong>
+  <%= @family_start_point.membid %>
+</p>
+
+<p>
+  <strong>Comment:</strong>
+  <%= @family_start_point.comment %>
+</p>
+
+<p>
+  <strong>Created at:</strong>
+  <%= @family_start_point.created_at %>
+</p>
+
+<p>
+  <strong>Updated at:</strong>
+  <%= @family_start_point.updated_at %>
+</p>
+
+<%= link_to 'Edit', edit_family_start_point_path(@family_start_point) %> |
+<%= link_to 'Back', family_start_points_path %>

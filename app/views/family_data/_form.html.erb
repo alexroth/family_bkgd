@@ -1,0 +1,73 @@
+<%= form_for(@family_datum) do |f| %>
+  <% if @family_datum.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@family_datum.errors.count, "error") %> prohibited this family_datum from being saved:</h2>
+
+      <ul>
+      <% @family_datum.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :gender %><br>
+    <%= f.text_field :gender %>
+  </div>
+  <div class="field">
+    <%= f.label :membid %><br>
+    <%= f.text_field :membid %>
+  </div>
+  <div class="field">
+    <%= f.label :father %><br>
+    <%= f.text_field :father %>
+  </div>
+  <div class="field">
+    <%= f.label :fatherid %><br>
+    <%= f.text_field :fatherid %>
+  </div>
+  <div class="field">
+    <%= f.label :mother %><br>
+    <%= f.text_field :mother %>
+  </div>
+  <div class="field">
+    <%= f.label :motherid %><br>
+    <%= f.text_field :motherid %>
+  </div>
+  <div class="field">
+    <%= f.label :birth_date %><br>
+    <%= f.text_field :birth_date %>
+  </div>
+  <div class="field">
+    <%= f.label :birth_place %><br>
+    <%= f.text_field :birth_place %>
+  </div>
+  <div class="field">
+    <%= f.label :comment %><br>
+    <%= f.text_field :comment %>
+  </div>
+  <div class="field">
+    <%= f.label :hash5 %><br>
+    <%= f.text_field :hash5 %>
+  </div>
+  <div class="field">
+    <%= f.label :created_at %><br>
+    <%= f.text_field :created_at %>
+  </div>
+  <div class="field">
+    <%= f.label :updated_at %><br>
+    <%= f.text_field :updated_at %>
+  </div>
+  <div class="field">
+    <%= f.label :override_year %><br>
+    <%= f.text_field :override_year %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

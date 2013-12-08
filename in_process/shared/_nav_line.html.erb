@@ -1,0 +1,32 @@
+<!-- <%= controller.controller_name %> -->
+<!-- _nav_line written 06/27/2012 A.D. Roth for pagination in method passed as nav_line-->
+<!-- uses @offset, @max_rows, and @table_count -->
+<!-- must be run under same controller for the links-->
+<% if @max_rows < @table_count %>
+<p class="Navigation">From <%=h @offset + 1 %> to <%=h [ @offset+@max_rows, @table_count ].min %> of <%=h @table_count %>  &nbsp; &nbsp; 
+   <%= link_to '|<< To First', { 
+    :controller => controller.controller_name, 
+    :action => nav_line, 
+    :curr_offset => @offset,
+    :next_offset => 'First' 
+   } %> &nbsp; &nbsp; 
+   <%= link_to '<< Prev Page', { 
+    :controller => controller.controller_name, 
+    :action => nav_line, 
+    :curr_offset => @offset,
+    :next_offset => 'Prev' 
+   } %> &nbsp; &nbsp; 
+   <%= link_to 'Next Page >>', { 
+    :controller => controller.controller_name, 
+    :action => nav_line, 
+    :curr_offset => @offset,
+    :next_offset => 'Next' 
+   } %> &nbsp; &nbsp; 
+   <%= link_to 'Last >>|', { 
+    :controller => controller.controller_name, 
+    :action => nav_line, 
+    :curr_offset => @offset,
+    :next_offset => 'Last' 
+   } %>
+</p>
+<% end %>

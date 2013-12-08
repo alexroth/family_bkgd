@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  family_descrip: 
+  membid: 
+  comment: 
+  created_at: 
+  updated_at: 2013-12-07 23:05:50
+
+two:
+  family_descrip: 
+  membid: 
+  comment: 
+  created_at: 
+  updated_at: 2013-12-07 23:05:50

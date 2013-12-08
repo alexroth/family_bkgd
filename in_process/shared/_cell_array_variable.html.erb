@@ -1,0 +1,112 @@
+<table class=cell_array>
+
+<tr><td class=header2 valign='top' colspan=2>
+    <td height="480" width="*" valign="top">
+      <center><table>
+        <tr>
+          <td><font class=normal><center><b><%= link_to cell_array.name, :action => "show" -%></b>
+              [<%= @cell_array[0]["ngend"] -%>], born <%= cell_array.birth_date -%>  &nbsp; &nbsp; &nbsp;
+              &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  <%= link_to 'Edit', :action => "edit" -%>
+              </center></font>
+          </td>
+          <td align='center'></td>
+        </tr>
+      </table>
+      <table border=1>
+        <tr border=1>
+<% gen = 1   build  gen 1 row_span 16 = 1; go down so gen 2 rowspan 8 = 3; go down
+                  so gen 3 row_span = 4 = 7; go down so gen 4 row_span = 2 = 15
+                  go down so gen 5 row_span 1 = 32; since row_span = 1, go across
+                  so gen 5 row_span = 1; go up one so gen 4 row_span = 2 = 16
+           so gen to row_span is 2 ** ( gen_limit - 1 ); no     y/x needs to be negative and power 2
+  1 => 16  2 => 8  3 => 4  4 => 2   5 => 1  5 is gen_limit
+row_span - gen_limit =    
+
+   level = ( ( 2 ** ( gen_limit + 1 ) - 2 ) / row_span                -2 * row_span
+   seq_no = 30 %>
+    <td  colspan=2 rowspan=16 class=m><%= render( :partial => "shared/one_cell", :object => @cell_array[1] ) %></td>
+    <td  colspan=2 rowspan=8 class=m><%= render( :partial => "shared/one_cell", :object => @cell_array[3] ) %></td>
+
+    <td  colspan=2 rowspan=4 class=m><%= render( :partial => "shared/one_cell", :object => @cell_array[7] ) %></td>
+    <td  colspan=2 rowspan=2 class=m><%= render( :partial => "shared/one_cell", :object => @cell_array[15] ) %></td>
+    <td colspan=2  class=m><%= render( :partial => "shared/one_cell", :object => @cell_array[31] ) %></td>
+  </tr>
+  <tr><td colspan=2  class=f><%= render( :partial => "shared/one_cell", :object => @cell_array[32] ) %></td></tr>
+<tr><td  colspan=2 rowspan=2 class=f><%= render( :partial => "shared/one_cell", :object => @cell_array[16] ) %></td>
+    <td colspan=2  class=m><%= render( :partial => "shared/one_cell", :object => @cell_array[33] ) %></td></tr>
+<tr><td colspan=2  class=f><%= render( :partial => "shared/one_cell", :object => @cell_array[34] ) %></td></tr>
+<tr><td  colspan=2 rowspan=4 class=f><%= render( :partial => "shared/one_cell", :object => @cell_array[8] ) %></td>
+    <td  colspan=2 rowspan=2 class=m><%= render( :partial => "shared/one_cell", :object => @cell_array[17] ) %></td>
+    <td colspan=2  class=m><%= render( :partial => "shared/one_cell", :object => @cell_array[35] ) %></td></tr>
+<tr><td colspan=2  class=f><%= render( :partial => "shared/one_cell", :object => @cell_array[36] ) %></td></tr>
+<tr><td  colspan=2 rowspan=2 class=f><%= render( :partial => "shared/one_cell", :object => @cell_array[18] ) %></td>
+    <td colspan=2  class=m><%= render( :partial => "shared/one_cell", :object => @cell_array[37] ) %></td></tr>
+<tr><td colspan=2  class=f><%= render( :partial => "shared/one_cell", :object => @cell_array[38] ) %></td></tr>
+<tr><td  colspan=2 rowspan=8 class=f><%= render( :partial => "shared/one_cell", :object => @cell_array[4] ) %></td>
+    <td  colspan=2 rowspan=4 class=m><%= render( :partial => "shared/one_cell", :object => @cell_array[9] ) %></td>
+    <td  colspan=2 rowspan=2 class=m><%= render( :partial => "shared/one_cell", :object => @cell_array[19] ) %></td>
+    <td colspan=2  class=m><%= render( :partial => "shared/one_cell", :object => @cell_array[39] ) %></td></tr>
+<tr><td colspan=2  class=f><%= render( :partial => "shared/one_cell", :object => @cell_array[40] ) %></td></tr>
+<tr><td  colspan=2 rowspan=2 class=f><%= render( :partial => "shared/one_cell", :object => @cell_array[20] ) %></td>
+    <td colspan=2  class=m><%= render( :partial => "shared/one_cell", :object => @cell_array[41] ) %></td></tr>
+<tr><td colspan=2  class=f><%= render( :partial => "shared/one_cell", :object => @cell_array[42] ) %></td></tr>
+<tr><td  colspan=2 rowspan=4 class=f><%= render( :partial => "shared/one_cell", :object => @cell_array[10] ) %></td>
+    <td  colspan=2 rowspan=2 class=m><%= render( :partial => "shared/one_cell", :object => @cell_array[21] ) %></td>
+    <td colspan=2  class=m><%= render( :partial => "shared/one_cell", :object => @cell_array[43] ) %></td></tr>
+<tr><td colspan=2  class=f><%= render( :partial => "shared/one_cell", :object => @cell_array[44] ) %></td></tr>
+<tr><td  colspan=2 rowspan=2 class=f><%= render( :partial => "shared/one_cell", :object => @cell_array[22] ) %></td>
+<td colspan=2  class=m><%= render( :partial => "shared/one_cell", :object => @cell_array[45] ) %></td></tr>
+<tr><td colspan=2  class=f><%= render( :partial => "shared/one_cell", :object => @cell_array[46] ) %></td></tr>
+<tr border=1><td  colspan=2 rowspan=16 class=f><%= render( :partial => "shared/one_cell", :object => @cell_array[2] ) %></td>
+    <td  colspan=2 rowspan=8 class=m><%= render( :partial => "shared/one_cell", :object => @cell_array[5] ) %></td>
+    <td  colspan=2 rowspan=4 class=m><%= render( :partial => "shared/one_cell", :object => @cell_array[11] ) %></td>
+    <td  colspan=2 rowspan=2 class=m><%= render( :partial => "shared/one_cell", :object => @cell_array[23] ) %></td>
+    <td colspan=2  class=m><%= render( :partial => "shared/one_cell", :object => @cell_array[47] ) %></td></tr>
+<tr><td colspan=2  class=f><%= render( :partial => "shared/one_cell", :object => @cell_array[48] ) %></td></tr>
+<tr><td  colspan=2 rowspan=2 class=f><%= render( :partial => "shared/one_cell", :object => @cell_array[24] ) %></td>
+    <td colspan=2  class=m><%= render( :partial => "shared/one_cell", :object => @cell_array[49] ) %></td></tr>
+<tr><td colspan=2  class=f><%= render( :partial => "shared/one_cell", :object => @cell_array[50] ) %></td></tr>
+<tr><td  colspan=2 rowspan=4 class=f><%= render( :partial => "shared/one_cell", :object => @cell_array[12] ) %></td>
+    <td  colspan=2 rowspan=2 class=m><%= render( :partial => "shared/one_cell", :object => @cell_array[25] ) %></td>
+    <td colspan=2  class=m><%= render( :partial => "shared/one_cell", :object => @cell_array[51] ) %></td></tr>
+<tr><td colspan=2  class=f><%= render( :partial => "shared/one_cell", :object => @cell_array[52] ) %></td></tr>
+<tr><td  colspan=2 rowspan=2 class=f><%= render( :partial => "shared/one_cell", :object => @cell_array[26] ) %></td>
+    <td colspan=2  class=m><%= render( :partial => "shared/one_cell", :object => @cell_array[53] ) %></td></tr>
+<tr><td colspan=2  class=f><%= render( :partial => "shared/one_cell", :object => @cell_array[54] ) %></td></tr>
+<tr><td  colspan=2 rowspan=8 class=f><%= render( :partial => "shared/one_cell", :object => @cell_array[6] ) %></td>
+    <td  colspan=2 rowspan=4 class=m><%= render( :partial => "shared/one_cell", :object => @cell_array[13] ) %></td>
+    <td  colspan=2 rowspan=2 class=m><%= render( :partial => "shared/one_cell", :object => @cell_array[27] ) %></td>
+    <td colspan=2  class=m><%= render( :partial => "shared/one_cell", :object => @cell_array[55] ) %></td></tr>
+<tr><td colspan=2  class=f><%= render( :partial => "shared/one_cell", :object => @cell_array[56] ) %></td></tr>
+<tr><td  colspan=2 rowspan=2 class=f><%= render( :partial => "shared/one_cell", :object => @cell_array[28] ) %></td>
+    <td colspan=2  class=m><%= render( :partial => "shared/one_cell", :object => @cell_array[57] ) %></td></tr>
+<tr><td colspan=2  class=f><%= render( :partial => "shared/one_cell", :object => @cell_array[58] ) %></td></tr>
+<tr><td  colspan=2 rowspan=4 class=f><%= render( :partial => "shared/one_cell", :object => @cell_array[14] ) %></td>
+    <td  colspan=2 rowspan=2 class=m><%= render( :partial => "shared/one_cell", :object => @cell_array[29] ) %></td>
+    <td colspan=2  class=m><%= render( :partial => "shared/one_cell", :object => @cell_array[59] ) %></td></tr>
+<tr><td colspan=2  class=f><%= render( :partial => "shared/one_cell", :object => @cell_array[60] ) %></td></tr>
+<tr><td  colspan=2 rowspan=2 class=f><%= render( :partial => "shared/one_cell", :object => @cell_array[30] ) %></td>
+<% gen += ( gen == gen_limit ? -1 : 1 )
+   row_span = 2 ** ( gen_limit - gen )
+   if gen > former_gen  #  move down one gen
+     offset = 
+
+maybe make an array where the table goes straight.  [ gen, row_span, m/f [ 0, 1 ], rcd ]
+   else  #  move up one gen 
+   end
+   if row_span == 1 %>
+     <td colspan=2  class=m><%= render( :partial => "shared/one_cell", :object => @cell_array[ 2 * seq_no + 1 ] ) %></td></tr>
+     <tr><td colspan=2  class=f><%= render( :partial => "shared/one_cell", :object => @cell_array[ 2 * seq_no + 2 ] ) %></td></tr>
+   <% end %>
+<%  former_gen = gen %>
+
+<% gen level = ( ( 2 ** ( gen_limit + 1 ) - 2 ) / row_span                -2 * row_span
+   seq_no = 30 %>
+</table></center>
+</td>
+
+<!-- End table -->
+</tr>
+</table>
+</div>
+

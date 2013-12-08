@@ -1,0 +1,156 @@
+<!-- Rev. 09/26/2012 to create partial to share btn family_data and family_views -->
+<a href='#alternate_names'>Alternate names</a> | 
+<a href='#affinities'>Other relationships</a> | 
+<a href='#documents'>Events and documents</a> | 
+<a href='#hash5_results'>Records with same 5-char. hash</a>
+<a name='top'></a>
+<% if @family_datum.name
+     odd_or_even = 0 %>
+     <hr />
+     <table>
+       <tr valign="top" class="ListLine<%= odd_or_even %>">
+         <td>Name: </td>
+         <%= render( :partial => "shared/family_datum_list_row", :object => @family_datum ) %>
+       </tr>
+<!-- Father -->
+     <% if @fathers.length > 0 %>
+          <tr><td colspan='10'><hr /></td></tr>
+          <% odd_or_even = 1
+          for parent in @fathers
+            if parent.gender == 'm'
+          %>
+              <tr valign='top' class='ListLine<%= odd_or_even %>'>
+                <td>father: </td>
+                <%= render( :partial => 'shared/family_datum_list_row', :object => parent ) %>
+              </tr>
+            <% end %>
+          <% end %>
+     <% elsif @family_datum.father %>
+          <tr>
+            <td> </td>
+            <td colspan='2'>
+            </td>
+            <td colspan='4'>No entry for <b>&quot<%=h @family_datum.father %>&quot</b>
+                 as <b>parent</b> of <b><%=h @family_datum.name %></b> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+                 <%= link_to 'New entry', new_family_datum_path %> 
+            </td>
+          </tr>
+     <% else %>
+          <tr>
+            <td> </td>
+            <td colspan='2'>  </td>
+            <td>No entry for father of <b><%=h @family_datum.name %>
+                    </b> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+                    <%= link_to 'New entry', new_family_datum_path %> 
+            </td>
+          </tr>
+     <% end %>
+<!-- Mother -->
+     <% if @mothers.length > 0 %>
+          <tr><td colspan='10'><hr /></td></tr>
+          <% odd_or_even = 1
+          for parent in @mothers
+            if parent.gender == 'f'
+          %>
+              <tr valign='top' class='ListLine<%= odd_or_even %>'>
+                <td>mother: </td>
+                <%= render( :partial => 'shared/family_datum_list_row', :object => parent ) %>
+              </tr>
+            <% end %>
+          <% end %>
+     <% elsif @family_datum.mother %>
+          <tr>
+            <td> </td>
+            <td colspan='2'>
+            </td>
+            <td colspan='4'>No entry for <b>&quot<%=h @family_datum.mother %>&quot</b>
+                 as <b>parent</b> of <b><%=h @family_datum.name %></b> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+                 <%= link_to 'New entry', new_family_datum_path %> 
+            </td>
+          </tr>
+     <% else %>
+          <tr>
+            <td> </td>
+            <td colspan='2'>  </td>
+            <td>No entry for mother of <b><%=h @family_datum.name %>
+                    </b> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+                    <%= link_to 'New entry', new_family_datum_path %> 
+            </td>
+          </tr>
+         <% render(:partial => 'shared/show_parents', :object => @mothers,
+              :locals => { :gender_needed => 'f', :child_rcd => @family_datum,
+              :parent_name => @family_datum.mother }) %>
+      <% end %>
+      </table>
+<% else %>
+  <%= link_to 'New entry', new_family_datum_path %></p>
+<% end %>
+<hr />
+<!-- Alternate names -->
+  <% form_tag( { :controller => 'family_aliases', :action => 'new' } ) do -%>
+         <%= hidden_field_tag( :membid, @family_datum.membid, :value => @family_datum.membid ) -%>
+         <%= hidden_field_tag( :name, @family_datum.name, :value => @family_datum.name ) -%>
+         <%= submit_tag "New alternate name record for #{ @family_datum.name }" %>
+  <% end %>
+<% if @family_aliases && @family_aliases.length > 0 %>
+     <h3>Alternate names (count <%=h @family_aliases.length.to_s %>) &nbsp;  &nbsp;  &nbsp;  &nbsp; <a name='alternate_names'></a><a href='#top'>Back to top</a></h3>
+     <%= render( :partial => "shared/family_aliases_list", :object => @family_aliases ) %>
+<% else %>
+  No alternate names found for <%=h @family_datum.name %>
+<% end %>
+<hr />
+<!-- Children -->
+  <% form_tag( { :controller => 'family_data', :action => 'new' } ) do -%>
+    <% if @family_datum.gender == "m" %>
+      <%= hidden_field_tag( :fatherid, @family_datum.membid, 
+          :value => @family_datum.membid ) -%>
+      <%= hidden_field_tag( :father, @family_datum.name, :value => @family_datum.name ) -%>
+    <% elsif @family_datum.gender == "f" %>
+      <%= hidden_field_tag( :motherid, @family_datum.membid, 
+          :value => @family_datum.membid ) -%>
+      <%= hidden_field_tag( :mother, @family_datum.name, :value => @family_datum.name ) -%>
+    <% end %>
+    <%= submit_tag "New child record" %>
+  <% end %>
+<% if @children.length > 0 %>
+  <h3>Children of <%= @family_datum.name %> (count of <%= @children.length -%>)</h3>
+    <%= render( :partial => "shared/children_table", :object => @children ) %>
+<% else %>
+  No child records found for <%= @family_datum.name %>
+<% end %>
+<hr />
+
+<!-- Documents -->
+<h3>Documents and events &nbsp;  &nbsp;  &nbsp;  &nbsp;  
+  <%= link_to 'New entry for document or event', new_family_document_path %> &nbsp; 
+  <a name='documents'></a><a href='#top'>Back to top</a></h3>
+<% if @family_documents.length > 0 %>
+  <p />Documents and events for <b><%= @family_datum.name %></b>: (count of <%= @family_documents.length -%>)
+    <%= render( :partial => "shared/family_documents_list", :object => @family_documents  ) %>
+<% else %>
+    <p>No entry for documents and events for <b><%=h @family_datum.name %></b> </p>
+<% end %>
+<hr />
+
+<!-- Affinities -->
+<h3>Other relationships &nbsp;  &nbsp;  &nbsp;  &nbsp; 
+    <%= link_to 'New relationship entry', new_family_affinity_path %> &nbsp; 
+   <a name='affinities'></a><a href='#top'>Back to top</a></h3>
+<% if @family_affinities.length > 0 %>
+  <p>Other relationships for <b><%= @family_datum.name %></b>: (count of <%= @family_affinities.length -%>)
+<%= render( :partial => "shared/family_affinities_list", :object => @family_affinities  ) %>
+</p>
+<% elsif @possible_affinities.length == 0 %>
+    <p>No other relationships listed for <b><%=h @family_datum.name %></b> </p>
+<% else %>
+  <p>Possible additional records for relationships: (count of <%= @possible_affinities.length -%>)</p>
+<%= render( :partial => "shared/family_affinities_list", :object => @possible_affinities  ) %>
+<% end %></p>
+<hr />
+
+<p>Record ID: <%=h @family_datum.id %> &nbsp; &nbsp; hash5: <%=h @family_datum.hash5 %> &nbsp; &nbsp; 
+Updated: <%=h @family_datum.updated_at %> &nbsp; &nbsp; Created: <%=h @family_datum.created_at %></p>
+<% unless controller.controller_name == 'family_view' %>
+  <%= link_to 'Edit this record', edit_family_datum_path(@family_datum) %> |
+<% end %>
+<%= link_to 'List all person records', family_data_path %>

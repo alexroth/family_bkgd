@@ -1,0 +1,24 @@
+<!-- _layout_side_menu written 06/12/2012 ADRoth -->
+<p style="color: green"><%= flash[:notice] %></p>
+
+       <div id="banner"> <%= controller.action_name %> ||  <%= controller.controller_name %>
+       </div>
+       <div id="columns">
+           <div id="side">
+               Controller: <b><%= controller.controller_name%></b><br /><hr />
+               Environment: <b><%= ENV["RAILS_ENV"] %></b><br /><hr />
+               <a href="http://localhost:3000/index.html">Home</a><br />
+               <% unless ( controller.controller_name == 'welcome' ) || 
+                   ( controller.controller_name == 'family_view' ) %>
+                 <a href="http://localhost:3000/family_start_points">Start points</a><br />
+                 <a href="http://localhost:3000/family_data">All Individuals</a><br />
+               <% end %>
+               <ul>
+                   <% %w{ index }.each do |action| -%>
+                       <li>
+                       <%= link_to_unless_current(action.capitalize, :action => action) %>
+                       </li>
+                   <% end -%>
+               </ul>
+           </div>
+       </div>

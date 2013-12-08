@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @family_affinity.name %>
+</p>
+
+<p>
+  <strong>Membid:</strong>
+  <%= @family_affinity.membid %>
+</p>
+
+<p>
+  <strong>Relationship:</strong>
+  <%= @family_affinity.relationship %>
+</p>
+
+<p>
+  <strong>Other type value:</strong>
+  <%= @family_affinity.other_type_value %>
+</p>
+
+<p>
+  <strong>Connection name:</strong>
+  <%= @family_affinity.connection_name %>
+</p>
+
+<p>
+  <strong>Connection membid:</strong>
+  <%= @family_affinity.connection_membid %>
+</p>
+
+<p>
+  <strong>Comment:</strong>
+  <%= @family_affinity.comment %>
+</p>
+
+<p>
+  <strong>Created at:</strong>
+  <%= @family_affinity.created_at %>
+</p>
+
+<p>
+  <strong>Updated at:</strong>
+  <%= @family_affinity.updated_at %>
+</p>
+
+<%= link_to 'Edit', edit_family_affinity_path(@family_affinity) %> |
+<%= link_to 'Back', family_affinities_path %>

@@ -1,0 +1,53 @@
+<%= form_for(@family_alias) do |f| %>
+  <% if @family_alias.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@family_alias.errors.count, "error") %> prohibited this family_alias from being saved:</h2>
+
+      <ul>
+      <% @family_alias.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :membid %><br>
+    <%= f.text_field :membid %>
+  </div>
+  <div class="field">
+    <%= f.label :type_of_name %><br>
+    <%= f.text_field :type_of_name %>
+  </div>
+  <div class="field">
+    <%= f.label :alias_name %><br>
+    <%= f.text_field :alias_name %>
+  </div>
+  <div class="field">
+    <%= f.label :alias_hash5 %><br>
+    <%= f.text_field :alias_hash5 %>
+  </div>
+  <div class="field">
+    <%= f.label :comment %><br>
+    <%= f.text_field :comment %>
+  </div>
+  <div class="field">
+    <%= f.label :created_at %><br>
+    <%= f.text_field :created_at %>
+  </div>
+  <div class="field">
+    <%= f.label :updated_at %><br>
+    <%= f.text_field :updated_at %>
+  </div>
+  <div class="field">
+    <%= f.label :other_type_value %><br>
+    <%= f.text_field :other_type_value %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

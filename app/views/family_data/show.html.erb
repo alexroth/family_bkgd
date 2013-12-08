@@ -1,0 +1,74 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @family_datum.name %>
+</p>
+
+<p>
+  <strong>Gender:</strong>
+  <%= @family_datum.gender %>
+</p>
+
+<p>
+  <strong>Membid:</strong>
+  <%= @family_datum.membid %>
+</p>
+
+<p>
+  <strong>Father:</strong>
+  <%= @family_datum.father %>
+</p>
+
+<p>
+  <strong>Fatherid:</strong>
+  <%= @family_datum.fatherid %>
+</p>
+
+<p>
+  <strong>Mother:</strong>
+  <%= @family_datum.mother %>
+</p>
+
+<p>
+  <strong>Motherid:</strong>
+  <%= @family_datum.motherid %>
+</p>
+
+<p>
+  <strong>Birth date:</strong>
+  <%= @family_datum.birth_date %>
+</p>
+
+<p>
+  <strong>Birth place:</strong>
+  <%= @family_datum.birth_place %>
+</p>
+
+<p>
+  <strong>Comment:</strong>
+  <%= @family_datum.comment %>
+</p>
+
+<p>
+  <strong>Hash5:</strong>
+  <%= @family_datum.hash5 %>
+</p>
+
+<p>
+  <strong>Created at:</strong>
+  <%= @family_datum.created_at %>
+</p>
+
+<p>
+  <strong>Updated at:</strong>
+  <%= @family_datum.updated_at %>
+</p>
+
+<p>
+  <strong>Override year:</strong>
+  <%= @family_datum.override_year %>
+</p>
+
+<%= link_to 'Edit', edit_family_datum_path(@family_datum) %> |
+<%= link_to 'Back', family_data_path %>
