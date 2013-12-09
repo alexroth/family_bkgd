@@ -1,0 +1,2 @@
+module ViewOnlyHelper
+end

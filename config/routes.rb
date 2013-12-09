@@ -1,4 +1,5 @@
 FamilyBkgd::Application.routes.draw do
+  get "welcome/view_only"
   resources :family_start_points
 
   resources :family_documents
