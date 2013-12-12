@@ -1,0 +1,10 @@
+<p><large><b>Listing family_documents</b></large> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;    <%= link_to 'New  family_document', new_family_document_path %></p>
+    <%= render( :partial => "shared/nav_line", :object => "index"  ) %>
+    <%= render( :partial => "shared/family_documents_list", :object => @family_documents  ) %>
+
+<br />
+
+<%= link_to 'New family_document', new_family_document_path %>
+<%= link_to 'Family tree start points', { :controller => 'family_start_points', 
+          :action => 'index' }  %>
+

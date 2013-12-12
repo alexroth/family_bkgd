@@ -1,0 +1,45 @@
+<h1>Editing the individual record for <%=h @family_datum.name %></h1>
+
+<% form_for(@family_datum) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+     &nbsp; &nbsp; Name: <%= f.text_field :name, :size => '33', :tabindex => 2 -%>
+    &nbsp; &nbsp; &nbsp; Gender: <%= f.select :gender, %w{ m f }, :include_blank => true, 
+        :size => 1, :tabindex => 3  %>
+  </p>
+  <p>
+     &nbsp; &nbsp; Father: <%= f.text_field :father, :size => '33', :tabindex => 5 -%>
+     &nbsp; &nbsp; [Id: <%= f.text_field :fatherid, :size => '1', 
+         :include_blank => true, :tabindex => 6 -%>]
+  </p>
+  <p>
+     Mother: <%= f.text_field :mother, :size => '33', :tabindex => 7 %>
+         &nbsp; &nbsp; [Id: <%= f.text_field :motherid, :size => '1', 
+         :include_blank => true, :tabindex => 8 %>]
+  </p>
+  <p>
+    Born <%= f.date_select :birth_date, :include_blank => true, :tabindex => 9 %> 
+        (Year override in date: <%= f.text_field :override_year, :value => @initial_year, 
+         :size => '1', :tabindex => 10 -%>)
+  &nbsp; &nbsp; Birth place: <%= f.text_field :birth_place, :size => '30', :tabindex => 11 %>
+  </p>
+  <p>Comment:<br />
+    <%= f.text_area :comment, :size => '65', :tabindex => 12 %>
+  </p>
+  <p>
+    <%= f.submit "Update", :tabindex => 14 %>
+  </p>
+  <p>Record ID: <%=h @family_datum.id %> &nbsp; &nbsp; hash5: <%=h @family_datum.hash5 %> &nbsp; &nbsp; 
+  Updated: <%=h @family_datum.updated_at %> &nbsp; &nbsp; Created: <%=h @family_datum.created_at %></p>
+<% end %>
+
+<%= link_to 'Show', @family_datum %> |
+<%= link_to 'List all individuals', family_data_path %> |
+<%= link_to 'Destroy this record', @family_datum, :confirm => 'Are you sure?', :method => :delete %> |
+<%= link_to 'New record', new_family_datum_path %>
+
+<p>Instruction: To override the birth year, fill in the rest of the birthdate with any year and put 
+the birth year in the 'override date' field.  If the birthdate is not known but the birth year is, fill in only 
+the override date with the year.  If the birth date field is filled in at all, a month, day, <i>and</i> year must
+be supplied.</p>

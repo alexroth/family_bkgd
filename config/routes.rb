@@ -1,5 +1,6 @@
 FamilyBkgd::Application.routes.draw do
-  get "welcome/view_only"
+  #  get "welcome/view_only"
+  #  get 'welcome'
   resources :family_start_points
 
   resources :family_documents
@@ -64,4 +65,9 @@ FamilyBkgd::Application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
-end
+#  Added 12/09/2013 A.D. Roth from family_db project
+  #  get ':controller/:action/:id' => ':controller/:action/:id'
+  #  get ':controller/:action/:id.:format'
+  #  root 'welcome'
+
+  end

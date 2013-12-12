@@ -1,0 +1,40 @@
+<h1>Editing family_alias</h1>
+
+<% form_for(@family_alias) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :name %>: <%= f.text_field :name, :tabindex => 2 %>
+        [<%= f.label :membid %>: <%= f.text_field :membid, :size => 1, :tabindex => 3 %>
+  </p>
+  <p>
+    <%= f.label :type_of_name %>: <%= f.select :type_of_name, %w{      
+      birth_name nickname maiden_name married_name professional_name aka other }, 
+      :include_blank => true, :size => 3 %>
+  </p>
+  <p>
+    <%= f.label :alias_name %>: <%= f.text_field :alias_name, :tabindex => 5 %>
+  </p>
+  <p>
+    <%= f.label :alias_hash5 %><br />
+    <%= f.text_field :alias_hash5 %>
+  </p>
+  <p>
+    <%= f.label :comment %><br />
+    <%= f.text_area :comment, :tabindex => 6 %>
+  </p>
+  <p>
+    <%= f.submit "Update", :tabindex => 7 %>
+  </p>
+<p>Record ID: <%=h @family_alias.id %> &nbsp; &nbsp;  alias_hash5: <%=h @family_alias.alias_hash5 %>
+ &nbsp; &nbsp; Updated: <%=h @family_alias.updated_at %> &nbsp; &nbsp; Created: <%=h @family_alias.created_at %></p>
+
+<% end %>
+
+<%= link_to 'Show', @family_alias %> |
+<% delete_msg = "Are you sure you want to delete #{ @family_alias.type_of_name } " + 
+    "'#{ @family_alias.alias_name }' for '#{ @family_alias.name }'?" %>
+<%= link_to 'Destroy this record', @family_alias, :confirm => delete_msg, :method => :delete %>
+
+<%= link_to 'List all alternate names', family_aliases_path %>
+

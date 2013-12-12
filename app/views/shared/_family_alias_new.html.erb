@@ -1,0 +1,17 @@
+  <p>
+    Record name: <%= family_alias_new.label :name %> <%= family_alias_new.text_field :name, 
+        :value => @name, :size => 33 %> [link: <%= family_alias_new.text_field :membid, 
+        :value => @membid, :size => 1 %>]
+    Type of name: <%= family_alias_new.select :type_of_name, %w{      
+      birth_name nickname maiden_name married_name professional_name aka other }, 
+      :include_blank => true, :size => 3 %>
+      (Other type of name: <%= family_alias_new.text_field :other_type_value, :size => '2' %>)
+  </p>
+  <p>
+    Alternate name: <%= family_alias_new.text_field :alias_name %>
+  </p>
+  <p>
+    <%= family_alias_new.label :comment %><br />
+    <%= family_alias_new.text_area :comment %>
+  </p>
+

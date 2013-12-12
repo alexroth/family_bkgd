@@ -1,0 +1,60 @@
+<p><b>
+  <% if @family_document.membid -%>
+    <%= link_to @family_document.name, { :controller => 'family_data', 
+        :action => 'show', :membid => @family_document.membid } 
+    -%>
+  <% else -%>
+    <%= link_to @family_document.name, { :controller => 'family_data', 
+        :action => 'show', :name => @family_document.name } %>
+  <% end %>
+  </b> [<%=h @family_document.membid %>]
+</p>
+<% if @family_document.event_type %>
+     <p>Event: 
+       <%if @family_document.event_type.downcase == "other" -%>
+         <%= @family_document.other_event_type -%>,
+       <% else %>
+         <%= @family_document.event_type -%>,
+       <% end %> <%=h @family_document.event_date -%>
+     </p>
+    <% if @family_document.event_place && ( @family_document.event_place.length > 0 ) -%>
+     <p>Place: <%=h @family_document.event_place %> 
+       <% if @family_document.place_type && ( @family_document.place_type.length > 0 ) %>
+         (
+         <%if @family_document.place_type.downcase == "other" %>
+             <%= @family_document.other_place_type -%>
+         <% else %>
+             <%= @family_document.place_type -%>
+         <% end %>)
+       <% end %>
+     </p>
+   <% end %>
+<% end %>
+
+<%if @family_document.doc_descrip && ( @family_document.doc_descrip.length > 0 ) -%>
+  <p><b>Document:</b> <%=h @family_document.doc_descrip %>
+     <%if @family_document.doc_type.downcase == "other" -%>
+       (<%= @family_document.other_doc_type -%>)
+     <% else %>
+       (<%= @family_document.doc_type -%>)
+     <% end %>
+  <%if @family_document.doc_link && ( @family_document.doc_link.length > 0 ) -%>
+    <b>Link:</b> 
+      <%if @family_document.doc_type.downcase == "link" %>
+        <%=h @family_document.doc_link %>
+      <% else %>
+        <%=h @family_document.doc_link %>
+      <% end %>
+  <% end %>
+  </p>
+<% end %>
+
+<% if @family_document.comment && ( @family_document.comment.length > 0 ) %>
+<p>
+  <b>Comment:</b> 
+  <%=h @family_document.comment %>
+</p>
+<% end %>
+
+<%= link_to 'Edit', edit_family_document_path(@family_document) %> |
+<%= link_to 'List all document entries', family_documents_path %>

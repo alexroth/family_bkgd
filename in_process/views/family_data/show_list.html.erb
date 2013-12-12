@@ -1,0 +1,51 @@
+  Search result for &quot;<%= @name %>&quot;
+  <hr />
+
+<table>
+  <tr>
+    <th>Link to Select:</th>
+    <th></th>
+    <th>Gender</th>
+    <th>Birth date and place</th>
+    <th>Parents</th>
+    <th> </th>
+    <th> </th>
+    <th>Type of hit</th>
+    <th></th>
+    <th></th>
+    <th>Record Id</th>
+    <th>Updated/Created</th>
+  </tr>
+
+<% @cand_rcds.each do | one_rcd | 
+     family_datum = one_rcd[ 1 ]%>
+  <tr>
+    <td><%= link_to family_datum.name, { :controller => 'family_data', 
+        :action => 'tree', :id => family_datum.membid } %></td>
+    <td><%=h family_datum.gender %> &nbsp; &nbsp; </td>
+    <td><%=h family_datum.birth_date %><br />
+        <%=h family_datum.birth_place %></td>
+    <td>[<%=h family_datum.membid %>]</td>
+    <td><%=h family_datum.father %><br />
+        <%=h family_datum.mother %></td>
+    <td>[<%=h family_datum.fatherid %>]<br />
+        [<%=h family_datum.motherid %>]</td>
+    <td> &nbsp; </td>
+    <td> <%=h one_rcd[ 2 ] %> </td>
+    <% delete_msg = "Are you sure you want to delete record #{ family_datum.id } for #{ family_datum.name }?" %>
+    <td> &nbsp; 
+        <%= link_to 'Edit', edit_family_datum_path(family_datum) %><br />
+        <%= link_to 'Destroy', family_datum, 
+            :confirm => delete_msg, :method => :delete %></td>
+    <td> &nbsp; </td>
+    <td><small><%=h family_datum.id %><br /><%=h family_datum.hash5 %></small></td>
+    <td><small><%=h family_datum.updated_at %>/<br />
+        <%=h family_datum.created_at %></small></td>
+  </tr>
+<% end %>
+</table>
+
+<hr />
+<p><%= link_to 'New person record', new_family_datum_path %> | <%= link_to 'Show all individuals', family_data_path %></p>
+<hr />
+

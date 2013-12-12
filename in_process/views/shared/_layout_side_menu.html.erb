@@ -1,6 +1,5 @@
 <!-- _layout_side_menu written 06/12/2012 ADRoth -->
-<!-- Rev. 12/09/2013 for family_bkgd project -->
-<p style="color: gray"><%= flash[:notice] %></p>
+<p style="color: green"><%= flash[:notice] %></p>
 
        <div id="banner"> <%= controller.action_name %> ||  <%= controller.controller_name %>
        </div>
@@ -10,18 +9,16 @@
                Environment: <b><%= ENV["RAILS_ENV"] %></b><br /><hr />
                <a href="http://localhost:3000/index.html">Home</a><br />
                <% unless ( controller.controller_name == 'welcome' ) || 
-                   ( controller.controller_name == 'view_only' ) %>
+                   ( controller.controller_name == 'family_view' ) %>
                  <a href="http://localhost:3000/family_start_points">Start points</a><br />
                  <a href="http://localhost:3000/family_data">All Individuals</a><br />
                <% end %>
-               ___________
-               <!-- ul -->
-<!--               %w{ index }.each do |action|  -->
-                <!-- controller.methods.each do | action | -%  -->
-                       <!-- li -->
-                       <!-- link_to_unless_current(action.capitalize, :action => action) -->
-                       <!-- /li -->
-                   <!-- end -->
-               <!-- /ul -->
+               <ul>
+                   <% %w{ index }.each do |action| -%>
+                       <li>
+                       <%= link_to_unless_current(action.capitalize, :action => action) %>
+                       </li>
+                   <% end -%>
+               </ul>
            </div>
        </div>

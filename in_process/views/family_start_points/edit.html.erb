@@ -1,0 +1,24 @@
+<h1>Editing family_start_point</h1>
+
+<% form_for(@family_start_point) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :family_descrip %><br />
+    <%= f.text_field :family_descrip %>
+  </p>
+  <p>
+    <%= f.label :membid %><br />
+    <%= f.text_field :membid %>
+  </p>
+  <p>
+    <%= f.label :comment %><br />
+    <%= f.text_area :comment %>
+  </p>
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @family_start_point %> |
+<%= link_to 'Back', family_start_points_path %>

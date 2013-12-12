@@ -1,0 +1,40 @@
+<table>
+  <tr>
+    <th>Name</th>
+    <th></th>
+    <th>Gender</th>
+    <th>Birth date and place</th>
+    <th>Parents</th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th>Record Id</th>
+    <th>Updated/Created</th>
+  </tr>
+
+<% for family_datum in @family_data %>
+  <tr>
+    <td><%= link_to family_datum.name, family_datum %><%=h family_datum.name %></td>
+    <td>[<%=h family_datum.membid %>]</td>
+    <td><%=h family_datum.gender %></td>
+    <td><%=h family_datum.birth_date %><br />
+        <%=h family_datum.birth_place %></td>
+    <td><%=h family_datum.father %><br />
+        <%=h family_datum.mother %></td>
+    <td>[<%=h family_datum.fatherid %>]<br />
+        [<%=h family_datum.motherid %>]</td>
+    <td> &nbsp; </td>
+    <% delete_msg = "Are you sure you want to delete record #{ family_datum.id } for #{ family_datum.name }?" %>
+    <td> &nbsp; 
+        <%= link_to 'Edit', edit_family_datum_path(family_datum) %><br />
+        <%= link_to 'Destroy', family_datum, 
+            :confirm => delete_msg, :method => :delete %></td>
+    <td> &nbsp; </td>
+    <td><small><%=h family_datum.id %><br /><%=h family_datum.nent5 %></small></td>
+    <td><small><%=h family_datum.updated_at %><br />
+        <%=h family_datum.created_at %></small></td>
+  </tr>
+<% end %>
+</table>
+

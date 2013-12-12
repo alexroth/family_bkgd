@@ -1,0 +1,8 @@
+<p><large><b>Listing all persons</b></large> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;    <%= link_to 'New  entry', new_family_datum_path %></p>
+    <%= render( :partial => "shared/nav_line", :object => "index"  ) %>
+  <%= render( :partial => "shared/family_data_list" ) %>
+
+<br />
+    <%= render( :partial => "shared/nav_line", :object => "index"  ) %>
+<br />
+<%= link_to 'New record for an individual', new_family_datum_path %>

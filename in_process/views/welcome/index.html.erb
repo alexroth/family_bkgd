@@ -1,0 +1,23 @@
+<p><large><b>Listing start points for family tree</b></large> </p>
+    <%= render( :partial => "shared/nav_line", :object => "index"  ) %>
+<table>
+  <tr>
+    <th> Description <br /> of starting point </th>
+    <th> &nbsp; </th>
+  </tr>
+  <tr><td> &nbsp; </td></tr>
+<% for family_start_point in @family_start_points %>
+  <tr>
+    <td>
+      <%= link_to family_start_point.family_descrip, { :controller => 'family_view', 
+          :action => 'tree', :membid => family_start_point.membid }  %>
+    </td>
+  </tr>
+  <% if family_start_point.comment && ( family_start_point.comment.length > 0 ) %>
+    <tr><td colspan='5'>Comment: <%=h family_start_point.comment %></td></tr>
+  <% end %>
+<% end %>
+</table>
+
+<br />
+

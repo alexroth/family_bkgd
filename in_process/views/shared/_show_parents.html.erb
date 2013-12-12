@@ -1,0 +1,35 @@
+<tr>   <td><%= link_to show_parents[0].name, show_parents[0] %></td></tr>
+<% odd_or_even = 1
+   if show_parents.length > 0
+     for parent in show_parents
+       if parent.gender == gender_needed
+%>
+        <tr valign='top' class='ListLine<%= odd_or_even %>'>
+           <td>parent: 
+           </td>
+           <%= render( :partial => 'shared/family_datum_list_row', :object => parent ) %>
+         </tr>
+    <% end %>
+  <% end %>
+<% elsif parent_name %>
+     <tr>
+       <td> </td>
+       <td colspan='2'>
+       </td>
+       <td colspan='4'>No entry for <b>&quot<%=h parent_name %>&quot</b>
+               as <b>parent</b> of <b><%=h child_rcd.name %></b> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+               <%= link_to 'New entry', new_family_datum_path %> 
+       </td>
+     </tr>
+<% else %>
+     <tr>
+       <td> </td>
+       <td colspan='2'>
+       </td>
+       <td>No entry for parent of <b><%=h child_rcd.name %>
+               </b> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+               <%= link_to 'New entry', new_family_datum_path %> 
+       </td>
+     </tr>
+<% end %>
+

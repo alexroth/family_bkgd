@@ -1,0 +1,85 @@
+<!-- _cell_array.html.erb -->
+<!-- Rev. 08/15/2012 to continue development following dev. of prep_cell_array -->
+<!-- class=familytable-->
+<% curr_rcd, curr_gen, curr_gender = cell_array.shift 
+   require 'general_helpers_201109'
+   puts; puts "_cell_array starting with curr_rcd " + convert_record_to_line( curr_rcd ) 
+   if curr_rcd.class == String
+     curr_name = "_________"
+     curr_birth_date = ''
+   else 
+     curr_name = curr_rcd.name
+     curr_birth_date = ( curr_rcd.birth_date.nil? ? '' : fmt_date_format_to_string( curr_rcd.birth_date ) )
+   end
+%>
+<center><table class=cell_array>
+<tr><td class=header2 valign='top' colspan=2>
+    <td height="48" width="*" valign="top">
+        <font class=header2><center><b><%= link_to curr_name, :action => "show" -%></b>
+            [<%= curr_gender -%>]<% unless curr_birth_date == '' -%>
+, born <%=h curr_birth_date -%><% end -%>
+            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; 
+            &nbsp;  <%= link_to 'Edit', :action => "edit" -%>
+        </center></font>
+    </td>
+    <td align='center'></td>
+  </tr>
+</table>
+
+<table border=1>
+  <tr border=1>
+<%  prev_gen = 99
+    cell_array.each_with_index do | one_block, blk_ix |
+      puts; puts "#{ blk_ix }.  Processing cell = #{ one_block } "
+      curr_rcd, curr_gen, curr_gender = one_block
+      puts; puts "_cell_array.html.erb now processing record " + convert_record_to_line( curr_rcd ) 
+      puts "In _cell_array for generation #{ curr_gen.inspect }: " + 
+          "#{ blk_ix }: curr_rcd is #{ show_cell_rcd( curr_rcd, @col_heads ).inspect }"
+      if curr_gen == prev_gen 
+      puts; puts "changing rows, bc curr_gen = #{ curr_gen } and prev_gen = #{ prev_gen } "
+-%>
+        </tr><tr border=1>
+<%    end 
+      prev_gen = curr_gen
+      this_row_span = ( 2 ** ( @gen_limit - curr_gen )).to_i 
+-%>
+      <td rowspan='<%= this_row_span %>'>
+        <ul class=single_cell>
+<%        if curr_rcd.class == String
+%>
+            <li>  <u><%=h curr_name %></u> </li>
+
+<%        else 
+%>
+            <li> 
+<%=         link_to curr_name, :action => :tree, :id => curr_rcd[ :id ].to_i  
+-%>
+<%=         ( curr_rcd["gender"] + ",") unless curr_rcd["gender"].nil? || curr_rcd[ "gender" ] == "" 
+-%> 
+<%          if curr_rcd["birth_date"] 
+%>
+<%=           fmt_date_format_to_string( curr_rcd["birth_date"]) 
+-%>
+<%          end 
+%>
+  [
+<%=            curr_rcd["membid"] unless curr_rcd["membid"].nil? || 
+                curr_rcd["membid"] == "" 
+%>]
+            </li>
+<%        end 
+%>
+        </ul>
+      </td>
+<%  end
+    
+%>
+  </tr>
+</table></center>
+After table</td>
+
+<!-- End table -->
+</tr>
+</table>
+</div>
+

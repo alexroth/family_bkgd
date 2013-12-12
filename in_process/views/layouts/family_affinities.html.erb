@@ -1,0 +1,24 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+  <title>FamilyAffinities: <%= controller.action_name %></title>
+  <%= stylesheet_link_tag 'family_css_2012', :media => 'all' -%>
+</head>
+<body>
+
+<p style="color: green"><%= flash[:notice] %></p>
+  <%= render( :partial => "shared/layout_side_menu" ) %>
+  <div id="main"> 
+<p style="color: green"><%= flash[:notice] %></p>
+<p><%= form_tag :controller => 'family_data', :action => 'show_list', :class => 'prettybutton' %>
+  Another entry: <%= text_field( 'family_datum', 'name', :size => 33, :tabindex => 1) %>
+  <%= submit_tag "Search" %>
+</form></p>
+
+<%= yield  %>
+
+</body>
+</html>

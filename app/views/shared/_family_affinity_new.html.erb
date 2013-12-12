@@ -1,0 +1,37 @@
+<% form_for(@family_affinity) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :membid %><br />
+    <%= f.text_field :membid %>
+  </p>
+  <p>
+    <%= f.label :relationship %><br />
+    <%= f.select :relationship, %w{ spouse cousin friend step_sibling godfather godmother other }, 
+      :include_blank => true, :size => 3 %>
+  </p>
+  <p>
+    <%= f.label :other_type_value %><br />
+    <%= f.text_field :other_type_value %>
+  </p>
+  <p>
+    <%= f.label :connection_name %><br />
+    <%= f.text_field :connection_name %>
+  </p>
+  <p>
+    <%= f.label :connection_membid %><br />
+    <%= f.text_field :connection_membid %>
+  </p>
+  <p>
+    <%= f.label :comment %><br />
+    <%= f.text_area :comment %>
+  </p>
+  <p>
+    <%= f.submit "Create" %>
+  </p>
+<% end %>
+

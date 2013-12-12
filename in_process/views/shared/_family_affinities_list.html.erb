@@ -1,0 +1,65 @@
+<table>
+  <tr>
+    <th>Name</th>
+    <th> &nbsp; </th>
+    <th> &nbsp; </th>
+    <th> &nbsp; </th>
+    <th>Relationship</th>
+    <th>Connection name</th>
+    <th> &nbsp; </th>
+    <th> &nbsp; </th>
+  </tr>
+
+<% for family_affinity in family_affinities_list %>
+  <tr>
+    <td>
+<%           if family_affinity.membid 
+-%>
+<%=          link_to family_affinity.name, { :controller => 'family_data', 
+                 :action => 'show', :membid => family_affinity.membid } 
+-%>
+<%         else 
+-%>
+<%=          link_to family_affinity.name, { :controller => 'family_data', 
+                 :action => 'show_list', :name => family_affinity.name } 
+-%>
+<%         end 
+-%>
+    </td>
+    <td> &nbsp; </td>
+    <td>[<%=h family_affinity.membid -%>]</td>
+    <td> &nbsp; </td>
+    <td><% if family_affinity.relationship == 'other' -%>
+      <%=h family_affinity.other_type_value -%></td>
+    <% else -%>
+      <%=h family_affinity.relationship -%>
+    <% end -%>: </td>
+    <td>
+<%           if family_affinity.connection_membid 
+-%>
+<%=          link_to family_affinity.connection_name, { :controller => 'family_data', 
+                 :action => 'show', :membid => family_affinity.connection_membid } 
+-%>
+<%         else 
+-%>
+<%=          link_to family_affinity.connection_name, { :controller => 'family_data', 
+                 :action => 'show_list', :name => family_affinity.connection_name } 
+-%>
+<%         end 
+-%>
+</td>
+    <td> &nbsp; </td>
+    <td>[<%=h family_affinity.connection_membid %>]</td>
+    <td> &nbsp; </td>
+    <% delete_msg = "Are you sure you want to delete relationship name " + 
+        "'#{ family_affinity.connection_name }' for '#{ family_affinity.name }'?" %>
+    <td>Relationship record: <%= link_to 'show, ', family_affinity %>
+        <%= link_to 'edit, ', edit_family_affinity_path(family_affinity) %> 
+        <%= link_to 'destroy', family_affinity, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+  <% if family_affinity.comment && ( family_affinity.comment.length > 0 ) %>
+    <tr><td colspan='5'>Comment: <%=h family_affinity.comment %></td></tr>
+  <% end %>
+<% end %>
+</table>
+

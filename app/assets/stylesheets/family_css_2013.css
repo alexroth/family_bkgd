@@ -1,0 +1,170 @@
+.ListLine0 {
+/*             background: #e0f8f8;  
+               background: #00F0E0;  */
+             background: #FFFFFF;
+}
+.ListLine1 {
+/*             background: #f8e0f8;  
+               background: #E0D000; */
+             background: #C0C0C0;
+}
+#banner {
+    background: #EEE;
+    height: 40px;
+    /* padding: 5px 0px 5px 0px; */
+    border-bottom: 2px solid;
+    font: small-caps 18pt/18pt "Times New Roman", serif;
+    color: #222;
+    text-align: center;
+}
+#banner img {
+  float: left;
+  height: 40px; }
+             #columns {
+                background: #DDD;
+                float: left;
+                width: 50px;
+             }
+             #main {
+                width: 85%;
+                margin-left: 7em;
+/*                padding-top: 4ex;  */
+                padding-left: 2em;
+                background: white;
+                float: top;
+             }
+             #side {
+                float: left;
+                padding-top: 1em;
+                padding-left: 1em;
+                padding-bottom: 1em;
+                width: 8em;
+/*                background: #141;        */
+                background: #DDD;
+             }
+#side a {
+  color: #333;
+  font: smaller sans-serif;
+}
+#side a:hover {
+  color: #fff ;
+}
+             #notice {
+                border: 2px solid red;
+                padding: 1em;
+                margin-bottom: 2em;
+                background-color: #f0f0f0;
+                font: bold smaller sans-serif;
+             }
+/* ul and li added 12/09/2013 from inventory */
+ul {
+  font-variant: normal;
+  padding: 0;
+  margin: 0;
+  /* border-bottom: #000 thin dashed; */
+  list-style: none;
+  }
+li {
+   font-size: 9pt; 
+   /*font-variant: small-caps; */
+   margin: 0 0 0 0;
+   display: inline;
+  }
+body, h0 {
+    font-family: 'Sylfaen', 'Liberation serif', Freeserif, 'Times Roman', 
+        Palatino, Georgia, "Times New Roman", Times, serif;
+    font-size: 12pt;
+    font-variant: normal;
+    line-height: 120%;
+    width: 100%;
+    padding: 0;
+    color: #111;
+    margin: 0 0 0 0;
+  }
+h1 {
+     /* bold */ -->
+    font-family: 'Sylfaen', 'Liberation serif', Freeserif, 'Times Roman', 
+        Palatino, Georgia, "Times New Roman", Times, serif;
+    font-size: 11pt;
+    font-weight: bold;
+    line-height: 120%;
+    /* font-variant: small-caps; */
+    border:1px solid #444;
+    padding: 0.02in 0 0.03in 0;
+  }
+h2 {
+  font-size:   11pt;
+  font-weight: bold;
+  margin: 0 0 0 0.15in;
+  padding: 0 0 0 0.15in;
+  }
+h3 {
+  font-size:   11pt;
+  font-weight: bold;
+  margin: 0 0 0 0.3in;
+  }
+h4 {
+  font-size:   11pt;
+  font-weight: bold;
+  margin: 0 0 0 0.45in;
+  }
+h5 {
+  font-size:   10pt;
+  font-weight: bold;
+  margin: 0 0 0 0.6in;
+  }
+h6 {
+  font-size:   9pt;
+  margin: 0 0 0 0.75in;
+  }
+.m {background-color: ffcccc;font-family:'Verdana';font-size:7pt;font-spacing:normal;border-style:solid;border-width:1;border-color:333300;text-decoration:none;white-space:nowrap;padding-left:2px;padding-top:0px;padding-bottom:0px}
+.f {background-color: ccccff;font-family:'Verdana';font-size:7pt;font-spacing:normal;border-width:1;border-style:solid;border-color:333300;text-decoration:none;white-space:nowrap;padding-left:2px}
+.w {background-color: FFFFFE;font-family:'Verdana';font-size:7pt;font-spacing:normal;border-width:1;border-style:solid;border-color:333366;text-decoration:none;white-space:nowrap;padding-left:1px;padding-right:1px}
+.w2 {background-color: FFFFFE;font-family:Verdana;font-size:7pt;font-spacing:normal;border-width:1;border-style:solid;border-color:333366;text-decoration:none;}
+.xf {background-color: cc9999;font-family:'Verdana';font-size:7pt;font-spacing:normal;border-style:solid;border-width:1;border-color:333300;text-decoration:none;white-space:nowrap;padding-left:2px;padding-top:0px;padding-bottom:0px}
+.xm {background-color: 9999cc;font-family:'Verdana';font-size:7pt;font-spacing:normal;border-width:1;border-style:solid;border-color:333300;text-decoration:none;white-space:nowrap;padding-left:2px}
+.header {background-color: 44443A;color:FFFFFF;font-family:verdana;font-size:7pt;font-spacing:normal;text-decoration:none;white-space:nowrap}
+.header_link {color:white;text-decoration:none; font: 7pt Verdana;}
+A {text-decoration:none; color:0000ff}
+.fff {background-color: ffcccc;font-family:Verdana;font-size:7pt;font-spacing:normal;text-decoration;border-bottom-width:1; border-color:black;border-style:solid;border-top-width:0;border-left-width:0;border-right-width:0}
+.ffm {background-color: ccccff;font-family:Verdana;font-size:7pt;font-spacing:normal;text-decoration;border-bottom-width:1; border-color:black;border-style:solid;border-top-width:0;border-left-width:0;border-right-width:0}
+table.cell_array {
+    border: #000 thin solid;
+  width: 100%;
+  border: 0 0 0 0;
+  padding: 0 0 0 0;
+}
+table.pedigreetable {
+    border-style: solid;
+    border: #000 thin solid;
+    padding: 0 0 0 0;
+    margin: 0 0 0 0;
+    width: 90%; 
+}
+tr {
+    border: #000 thin solid;
+}
+.top_rule {
+    border-top: #000 thin solid;
+}
+td {
+  padding: 0 0 0 0;
+  margin: 0 0 0 0;
+}
+ul.single_cell{
+    list-style: none;
+/*    border: 1pt dashed #CCC; */
+    padding: 0 0 0 0;
+}
+ul.single_cell li {
+    display: inline;
+    margin: 0 0 0 0;
+    padding: 0 0 0 0;
+    /* font-size: 150%; */
+}
+ul.single_cell li.left_regular {
+    float: left;
+}
+ul.single_cell li.right_regular {
+    float: right;
+

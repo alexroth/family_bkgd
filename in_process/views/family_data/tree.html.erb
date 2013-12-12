@@ -1,0 +1,33 @@
+<hr />
+<!-- Written 07/12-26/2012 for family_documents -->
+<!-- puts; puts "@cell_array is #{ @cell_array }"  -->
+<%= render(:partial => "shared/cell_array", :object => @cell_array) %>
+<%= link_to 'Show', @family_datum %> |
+<%= link_to 'List all individuals', family_data_path %> |
+<hr />
+<% if @children && @children.length > 0 %>
+  <p>Children of <b>&quot;<%= @family_datum.name %>&quot [<%=h @family_datum.membid %>]</b>: (count of <%= @children.count -%>)
+  <%= render( :partial => "shared/children_table", :object => @children ) %>
+  </p>
+  <hr />
+<% end %>
+<!-- Alternate names -->
+<% if @family_aliases && @family_aliases.length > 0 %>
+     <h3>Alternate names (count <%=h @family_aliases.length.to_s %>) &nbsp;  &nbsp;  &nbsp;  &nbsp; <a name='alternate_names'></a><a href='#top'>Back to top</a></h3>
+     <%= render( :partial => "shared/family_aliases_list", :object => @family_aliases ) %>
+  <hr />
+<% end %>
+<!-- Documents -->
+<% if @family_documents && @family_documents.length > 0 %>
+  <p />Documents and events for <b><%= @family_datum.name %></b>: (count of <%= @family_documents.length -%>)
+    <%= render( :partial => "shared/family_documents_list", :object => @family_documents  ) %>
+  </p>
+  <hr />
+<% end %>
+<!-- Affinities -->
+<% if @family_affinities && @family_affinities.length > 0 %>
+  <p>Other relationships for <b><%= @family_datum.name %></b>: (count of <%= @family_affinities.length -%>)
+    <%= render( :partial => "shared/family_affinities_list", :object => @family_affinities  ) %>
+  </p>
+<% end %>
+

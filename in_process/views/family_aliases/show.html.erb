@@ -1,0 +1,23 @@
+<p>
+  <b>Record name:</b>
+  <%=h @family_alias.name %> [<%=h @family_alias.membid %>]
+</p>
+
+<p>
+  <b><% if ( @family_alias.type_of_name.downcase == "other" ) && @family_alias.other_type_value -%>
+          <%=h @family_alias.other_type_value -%>
+     <% else -%>
+          <%=h @family_alias.type_of_name -%> 
+     <% end -%></b>:
+     <%=h @family_alias.alias_name -%> 
+     [<b>Hash5:</b> <%=h @family_alias.alias_hash5 %>]
+</p>
+<% if @family_alias.comment %>
+<p>
+  <b>Comment:</b>
+  <%=h @family_alias.comment %>
+</p>
+<% end %>
+
+<%= link_to 'Edit', edit_family_alias_path(@family_alias) %> |
+<%= link_to 'List all alternate names', family_aliases_path %>

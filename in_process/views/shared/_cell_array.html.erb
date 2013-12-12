@@ -1,0 +1,85 @@
+<!-- _cell_array.html.erb -->
+<!-- Rev. 08/15/2012 to continue development following dev. of prep_cell_array -->
+<!-- class=familytable-->
+<% curr_rcd, curr_gen, curr_gender = cell_array.shift 
+   require 'general_helpers_201109'
+-%>
+<!--   puts; puts "_cell_array starting with curr_rcd " + convert_record_to_line( curr_rcd ) -->
+<% if curr_rcd.class == String
+     curr_name = "_________"
+     curr_birth_date = ''
+     curr_birth_place = ''
+   else 
+     curr_name = curr_rcd.name
+     curr_birth_date = ( curr_rcd.birth_date.nil? ? '' : fmt_date_format_to_string( curr_rcd.birth_date ) )
+     #  curr_birth_date = curr_rcd.override_year if ( curr_birth_date = '' ) && curr_rcd.override_year
+     curr_birth_place = ( curr_rcd.birth_place.nil? ? '' : curr_rcd.birth_place )
+   end
+%>
+<center><table class=cell_array>
+<tr><td class=header2 valign='top' colspan=2>
+    <td height="48" width="*" valign="top">
+        <font class=header2><center><b><%= link_to curr_name, :action => "show", 
+            :id => curr_rcd.id -%></b>
+<% unless curr_birth_date == '' -%>
+, born <%=h curr_birth_date -%><% end -%><% unless curr_birth_place == '' -%>
+, <%=h curr_birth_place -%><% end -%>
+            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; 
+            &nbsp;  <%= link_to 'Edit', :action => "edit" -%> &nbsp;  &nbsp; &nbsp; 
+        [<%=h ( curr_gender + '.' ) if curr_gender -%>, <%=h curr_rcd.membid if curr_rcd.membid %>]</center></font>
+    </td>
+    <td align='center'></td>
+  </tr>
+</table>
+
+<table width="90%" border='1'>
+  <tr border=1>
+<%  cell_array.each_with_index do | one_block, blk_ix |
+-%>
+<!--      puts; puts "#{ blk_ix }.  Processing cell = #{ one_block } " -->
+<!-- Make calculations for current cell -->
+<%    curr_rcd, curr_gen, curr_gender = one_block
+-%>
+<!--      puts; puts "_cell_array.html.erb now processing record " + convert_record_to_line( curr_rcd ) 
+      puts "for curr_gen of #{ curr_gen } and curr_gender of '#{ curr_gender }'." -->
+<%    if curr_rcd.class == String
+        curr_name = ( curr_rcd.length > 0 ? curr_rcd : "_________" )
+        curr_birth_date = ''
+        curr_birth_place = ''
+      else 
+        curr_name = curr_rcd.name
+        curr_birth_date = ( curr_rcd.birth_date.nil? ? '' : fmt_date_format_to_string( curr_rcd.birth_date ) )
+        curr_birth_place = ( curr_rcd.birth_place.nil? ? '' : curr_rcd.birth_place )
+      end
+      this_row_span = ( 2 ** ( @gen_limit - curr_gen )).to_i 
+-%>
+<!-- Draw current cell -->
+      <td rowspan='<%= this_row_span %>'><p>
+<%      if curr_rcd.class == String
+%>
+           <%=h curr_name %>
+<%      else 
+%>
+<%=       link_to curr_name, :action => :tree, :id => curr_rcd[ :id ].to_i  
+-%> &nbsp; 
+<%        if curr_rcd["birth_date"] 
+%>
+born <%=         fmt_date_format_to_string( curr_rcd["birth_date"])
+-%>
+<%        end 
+-%>
+<%=        ( ', ' + curr_rcd["birth_place"] ) unless curr_rcd["birth_place"] == '' 
+%>
+ &nbsp; &nbsp;
+[<%=h ( curr_gender + '.' ) if curr_gender -%>, <%=h curr_rcd.membid if curr_rcd.membid %>]
+<%      end 
+%>
+      </p></td>
+<%=    '<td width=10 bgcolor=#770186 class=ib><font size=1>&nbsp;</font></td></tr><tr border=1>' if curr_gen == @gen_limit 
+-%>
+        
+<%  end  
+%>
+  </tr>
+</table></center>
+

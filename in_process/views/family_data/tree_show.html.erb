@@ -1,0 +1,27 @@
+<hr />
+<!-- Written 07/12/2012 for family_documents -->
+<% do_tree_show( @family_datum ) %>
+<%= render(:partial => "shared/cell_array", :object => @family_datum) %>
+<%= link_to 'Show', @family_datum %> |
+<%= link_to 'Back', ancestors_path %> |
+<hr />
+<p />Children from <b>&quot;<%= @family_datum.name %>&quot [<%=h @family_datum.membid %>]</b>: (count of <%= @children.count -%>)
+<table>
+<% odd_or_even = 0
+for child in @children 
+  odd_or_even = 1 - odd_or_even
+%>
+  <tr class="ListLine<%= odd_or_even %>">
+    <td><%=h child.membid %></td>
+    <td><%= child.name %></td>
+    <td><%=h child.gender %></td>
+    <td><%=h fmt_date_field_to_yyyy(child.nyr, child.ncen) %></td>
+    <td><%= link_to 'Show', child %> 
+        <%= link_to 'Edit', edit_ancestor_path(child) %>
+        <%= link_to 'Show_tree', :action => :tree_show, :id => child.id %></td>
+</td>
+  </tr>
+<% end %>
+</table>
+
+

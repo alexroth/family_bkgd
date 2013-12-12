@@ -1,0 +1,2 @@
+module FamilyStartPointsHelper
+end

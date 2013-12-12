@@ -1,0 +1,7 @@
+<p><large><b>Listing alternate names</b></large> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;    <%= link_to 'New  alternate name', new_family_alias_path %></p>
+    <%= render( :partial => "shared/nav_line", :object => "index"  ) %>
+    <%= render( :partial => "shared/family_aliases_list", :object => @family_aliases  ) %>
+
+<br />
+
+<%= link_to 'New alternate name', new_family_alias_path %>

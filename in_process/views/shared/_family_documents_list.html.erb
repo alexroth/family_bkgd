@@ -1,0 +1,49 @@
+<% prev_membid = 0 -%>
+<table>
+  <tr>
+    <% unless controller.controller_name == 'family_data' %>
+      <th>Name</th>
+    <% end %>
+    <th>Event type and date</th>
+    <th>Event place</th>
+    <th>Doc descrip</th>
+    <th>Doc type</th>
+    <th>Doc link</th>
+    <th>Comment</th>
+  </tr>
+
+<% for family_document in @family_documents %>
+  <tr>
+    <% unless controller.controller_name == 'family_data' %>
+      <td><b>
+        <% unless family_document.membid == prev_membid
+             if family_document.membid 
+        -%>
+               <%= link_to family_document.name, { :controller => 'family_data', 
+                  :action => 'show', :membid => family_document.membid } 
+               -%>
+          <% else 
+          -%>
+               <%= link_to family_document.name, { :controller => 'family_data', 
+                   :action => 'show', :name => family_document.name } %>
+          <% end %>
+        <% end 
+        prev_membid = family_document.membid %>
+        </b>[<% family_document.membid -%>]
+      </td>
+    <% end %>
+    <td><%=h family_document.event_type %>: <%=h family_document.event_date %></td>
+    <td><%=h family_document.event_place %> (Place type: <%=h family_document.place_type %>)</td>
+    <td><%=h family_document.doc_descrip %></td>
+    <td><%=h family_document.doc_type %></td>
+    <td><%=h family_document.doc_link %></td>
+    <td><%=h family_document.comment %></td>
+    <% delete_msg = "Are you sure you want to delete #{ family_document.doc_descrip } " + 
+        "for '#{ family_document.name }'?" %>
+    <td><%= link_to 'Show', family_document %> &nbsp; 
+        <%= link_to 'Edit', edit_family_document_path(family_document) %><br />
+    <%= link_to 'Destroy entry', family_document, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+

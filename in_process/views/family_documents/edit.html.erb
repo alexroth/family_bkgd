@@ -1,0 +1,10 @@
+<h1>Editing family_document</h1>
+
+<% form_for(@family_document) do |f| %>
+  <%= f.error_messages %>
+    <%= render( :partial => "shared/doc_new", :object => f ) %>
+    <%= f.submit "Update" %>
+<% end %>
+
+<%= link_to 'Show', @family_document %> |
+<%= link_to 'List all family documents', family_documents_path %>

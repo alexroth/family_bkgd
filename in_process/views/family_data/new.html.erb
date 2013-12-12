@@ -1,0 +1,35 @@
+<!-- Rev. 08/21/2012 to continue dev.-->
+<!-- # ----------------------------- -->
+<h1>New person record</h1>
+
+<% form_for( @family_datum ) do | f | %>
+  <%= f.error_messages %>
+<% puts "At start of view new for family_data, @father_name is '#{ @father_name }' and @fatherid is #{ @fatherid }" %>
+  <p>Name: <%= f.text_field :name, :size => 33, :tabindex => 2 %> 
+     Gender: <%= f.select :gender, %w{ m f }, :include_blank => true, :size => 1, :tabindex => 3  %>
+  </p>
+  <p>Father: <%= f.text_field :father, :value => @father_name, :size => 33, :tabindex => 4 %>
+     [Id: <%= f.text_field :fatherid, :value => @fatherid, :size => 1, :include_blank => true, :tabindex => 5 %>]
+  </p>
+  <p>Mother: <%= f.text_field :mother, :value => @mother_name, :size => 33, :tabindex => 6 %>
+     [Id: <%= f.text_field :motherid, :value => @motherid, :include_blank => true, :tabindex => 7 %>]
+  </p>
+  <p>Date of birth: <%= f.date_select :birth_date, :include_blank => true, :tabindex => 8 %>
+         (Year override in date: <%= f.text_field :override_year, :value => @initial_year, 
+         :size => '1', :tabindex => 9 -%>)
+
+     Place: <%= f.text_field :birth_place, :size => 33, :tabindex => 10 %>
+  </p>
+  <p>Comment: <%= f.text_area :comment, :size => '65', :tabindex => 11 %>
+  </p>
+  <p>
+    <%= f.submit "Create", :tabindex => 12 %>
+  </p>
+<% end %>
+
+<%= link_to 'List all records for persons', family_data_path %>
+
+<p>Instruction: To override the birth year, fill in the rest of the birthdate with any year and put 
+the birth year in the 'override date' field.  If the birthdate is not known but the birth year is, fill in only 
+the override date with the year.  If the birth date field is filled in at all, a month, day, <i>and</i> year must
+be supplied.</p>

@@ -1,0 +1,38 @@
+<p><large><b>Listing start points for family tree</b></large> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;    <%= link_to 'New start point for family tree', new_family_start_point_path %></p>
+    <%= render( :partial => "shared/nav_line", :object => "index"  ) %>
+<h1>Listing family_start_points</h1>
+
+<table>
+  <tr>
+    <th> Description <br /> of starting point </th>
+    <th> &nbsp; </th>
+    <th> &nbsp; </th>
+    <th> &nbsp; </th>
+    <th> &nbsp; </th>
+  </tr>
+<% for family_start_point in @family_start_points %>
+  <% delete_msg = "Are you sure you want to delete start point '" + 
+        family_start_point.family_descrip + "'" +
+        ( @name_for_membid && @name_for_membid[ family_start_point.membid ] ?
+           " beginning with '" + 
+           @name_for_membid[ family_start_point.membid ] + "'" : "" ) + "?" %>
+  <tr>
+    <td>
+      <%= link_to family_start_point.family_descrip, { :controller => 'family_data', 
+          :action => 'tree_show', :membid => family_start_point.membid }  %>
+    </td>
+    <td> &nbsp; </td>
+    <td><%= link_to "View,", family_start_point %>
+    <%= link_to 'Edit, or', edit_family_start_point_path(family_start_point) %>
+    <%= link_to 'Destroy', family_start_point, :confirm => delete_msg, :method => :delete %>
+ record of starting point</td>
+  </tr>
+  <% if family_start_point.comment && ( family_start_point.comment.length > 0 ) %>
+    <tr><td colspan='5'>Comment: <%=h family_start_point.comment %></td></tr>
+  <% end %>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New start point for family tree', new_family_start_point_path %>
